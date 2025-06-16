@@ -9,28 +9,34 @@ using System.Threading.Tasks;
 
 namespace RestaurantSystem.BusinessObjects.Models
 {
-    public class Category
+    public class Review
     {
         [Key]
-        public int CategoryID { get; set; }
+        public int ReviewID { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string CategoryName { get; set; }
+        public int OrderID { get; set; }
 
-        [StringLength(255)]
-        public string? Description { get; set; }
+        public int? CustomerID { get; set; }
 
         [Required]
-        public bool IsActive { get; set; } = true;
+        public int Rating { get; set; }
+
+        [StringLength(1000)]
+        public string? Comment { get; set; }
 
         public DateTime? CreatedAt { get; set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; set; } = DateTime.Now;
         public int? UpdatedBy { get; set; }
 
         // Navigation properties
+        [ForeignKey("OrderID")]
+        public Order Order { get; set; }
+
+        [ForeignKey("CustomerID")]
+        public Customer? Customer { get; set; }
+
         [ForeignKey("UpdatedBy")]
         public Staff? UpdatedByStaff { get; set; }
-        public List<MenuItem> MenuItems { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace RestaurantSystem.BusinessObjects.Models
 {
-    public class Category
+    public class Zone
     {
         [Key]
-        public int CategoryID { get; set; }
+        public int ZoneID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string CategoryName { get; set; }
+        public string ZoneName { get; set; }
 
         [StringLength(255)]
         public string? Description { get; set; }
@@ -31,6 +30,6 @@ namespace RestaurantSystem.BusinessObjects.Models
         // Navigation properties
         [ForeignKey("UpdatedBy")]
         public Staff? UpdatedByStaff { get; set; }
-        public List<MenuItem> MenuItems { get; set; }
+        public List<Table> Tables { get; set; }
     }
 }
