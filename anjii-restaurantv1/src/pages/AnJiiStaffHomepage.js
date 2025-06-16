@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+import OrderPage  from './AnJiiStaffOrderpage';
 import { 
   Home, 
   ShoppingBag, 
@@ -12,12 +14,14 @@ import {
   Clock,
   DollarSign,
   TrendingUp,
-  User
+  User,
+  ShoppingBasket,
+  ShoppingCart
 } from 'lucide-react';
 
 const AnJiiStaffHomepage = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
-
+  const navigate = useNavigate();
   const menuItems = [
     { id: 'dashboard', icon: Home, label: 'Trang chủ' },
     { id: 'orders', icon: ShoppingBag, label: 'Đơn hàng' },
@@ -52,6 +56,7 @@ const AnJiiStaffHomepage = () => {
   };
 
   const renderContent = () => {
+    
     switch(activeTab) {
       case 'dashboard':
         return (
@@ -62,7 +67,8 @@ const AnJiiStaffHomepage = () => {
                 <h1 className="text-2xl font-bold text-gray-900">Chào mừng trở lại!</h1>
                 <p className="text-gray-600">Tổng quan hoạt động nhà hàng hôm nay</p>
               </div>
-              <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
+              <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+                onClick={() => navigate('/staff/orders')}>
                 <Plus size={20} />
                 Đơn hàng mới
               </button>
@@ -169,9 +175,13 @@ const AnJiiStaffHomepage = () => {
             </div>
           </div>
         );
+     
+        return <Navigate to="/AnJiiStaffOrderpage" replace />;
       default:
         return null;
     }
+   
+    
   };
 
   return (
