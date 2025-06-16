@@ -8,6 +8,7 @@ export default function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<AnJiiStaffHomepage />} />
         <Route path="/staff" element={<AnJiiStaffHomepage />} />
         <Route path="/staff/orders" element={<AnJiiStaffOrderpage />} />
       </Routes>
