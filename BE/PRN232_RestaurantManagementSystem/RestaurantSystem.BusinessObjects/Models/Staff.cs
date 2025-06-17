@@ -9,17 +9,27 @@ using System.Threading.Tasks;
 
 namespace RestaurantSystem.BusinessObjects.Models
 {
-    public class Category
+    public class Staff
     {
         [Key]
-        public int CategoryID { get; set; }
+        public int StaffID { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string CategoryName { get; set; }
+        public int RoleID { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string FullName { get; set; }
+
+        [StringLength(15)]
+        public string? PhoneNumber { get; set; }
 
         [StringLength(255)]
-        public string? Description { get; set; }
+        public string? Email { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        public string PasswordHash { get; set; }
 
         [Required]
         public bool IsActive { get; set; } = true;
@@ -29,8 +39,13 @@ namespace RestaurantSystem.BusinessObjects.Models
         public int? UpdatedBy { get; set; }
 
         // Navigation properties
+        [ForeignKey("RoleID")]
+        public Role Role { get; set; }
+
         [ForeignKey("UpdatedBy")]
         public Staff? UpdatedByStaff { get; set; }
-        public List<MenuItem> MenuItems { get; set; }
+        public List<Bill> Bills { get; set; }
+        public List<Order> Orders { get; set; }
+        public List<StaffSchedule> StaffSchedules { get; set; }
     }
 }

@@ -276,3 +276,16 @@ __pycache__/
 # .gitignore
 appsettings.json
 .env
+
+# Additions for .NET 8 API with SQLite and GitHub Copilot
+
+# Ignore SQLite DB
+*.sqlite
+
+# Ensure Copilot & VS folders are ignored
+.vs/
+.vs/*
+
+# Ignore generated appsettings except production
+appsettings.*.json
+!appsettings.Production.json

@@ -9,24 +9,32 @@ using System.Threading.Tasks;
 
 namespace RestaurantSystem.BusinessObjects.Models
 {
-    public class OrderDetail
+    public class Bill
     {
         [Key]
-        public int OrderDetailID { get; set; }
+        public int BillID { get; set; }
 
         [Required]
         public int OrderID { get; set; }
 
-        public int? MenuItemID { get; set; }
-
-        public int? PromotionComboID { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string BillNumber { get; set; }
 
         [Required]
-        public int Quantity { get; set; }
+        public DateTime BillDate { get; set; } = DateTime.Now;
+
+        [Required]
+        [Column(TypeName = "decimal(12,2)")]
+        public decimal SubTotal { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(10,2)")]
-        public decimal UnitPrice { get; set; }
+        public decimal TaxAmount { get; set; } = 0;
+
+        [Required]
+        [Column(TypeName = "decimal(10,2)")]
+        public decimal ServiceCharge { get; set; } = 0;
 
         [Required]
         [Column(TypeName = "decimal(10,2)")]
@@ -34,14 +42,21 @@ namespace RestaurantSystem.BusinessObjects.Models
 
         [Required]
         [Column(TypeName = "decimal(12,2)")]
-        public decimal TotalPrice { get; set; }
+        public decimal TotalAmount { get; set; }
 
-        [StringLength(255)]
-        public string? Notes { get; set; }
+        [StringLength(30)]
+        public string? PaymentMethod { get; set; }
 
         [Required]
-        [StringLength(20)]
-        public string Status { get; set; } = "Pending";
+        [Column(TypeName = "decimal(12,2)")]
+        public decimal PaidAmount { get; set; } = 0;
+
+        [Required]
+        [Column(TypeName = "decimal(10,2)")]
+        public decimal ChangeAmount { get; set; } = 0;
+
+        [Required]
+        public int StaffID { get; set; }
 
         public DateTime? CreatedAt { get; set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; set; } = DateTime.Now;
@@ -51,11 +66,8 @@ namespace RestaurantSystem.BusinessObjects.Models
         [ForeignKey("OrderID")]
         public Order Order { get; set; }
 
-        [ForeignKey("MenuItemID")]
-        public MenuItem? MenuItem { get; set; }
-
-        [ForeignKey("PromotionComboID")]
-        public PromotionCombo? PromotionCombo { get; set; }
+        [ForeignKey("StaffID")]
+        public Staff Staff { get; set; }
 
         [ForeignKey("UpdatedBy")]
         public Staff? UpdatedByStaff { get; set; }

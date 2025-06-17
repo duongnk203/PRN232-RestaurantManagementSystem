@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestaurantSystem.BusinessObjects.Models;
 
@@ -11,9 +12,11 @@ using RestaurantSystem.BusinessObjects.Models;
 namespace RestaurantSystem.BusinessObjects.Migrations
 {
     [DbContext(typeof(AnJiiDbContext))]
-    partial class AnJiiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250616182539_KhoitaoDB")]
+    partial class KhoitaoDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,103 +97,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                         {
                             t.HasCheckConstraint("CK_Bills_TotalAmount", "[TotalAmount] >= 0");
                         });
-
-                    b.HasData(
-                        new
-                        {
-                            BillID = 1,
-                            BillDate = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            BillNumber = "BILL001",
-                            ChangeAmount = 0.00m,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            OrderID = 1,
-                            PaidAmount = 465750.00m,
-                            PaymentMethod = "QR_Pay",
-                            ServiceCharge = 20250.00m,
-                            StaffID = 4,
-                            SubTotal = 405000.00m,
-                            TaxAmount = 40500.00m,
-                            TotalAmount = 465750.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedBy = 4
-                        },
-                        new
-                        {
-                            BillID = 2,
-                            BillDate = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            BillNumber = "BILL002",
-                            ChangeAmount = 0.00m,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 25000.00m,
-                            OrderID = 2,
-                            PaidAmount = 231250.00m,
-                            PaymentMethod = "QR_Pay",
-                            ServiceCharge = 11750.00m,
-                            StaffID = 4,
-                            SubTotal = 235000.00m,
-                            TaxAmount = 23500.00m,
-                            TotalAmount = 231250.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedBy = 4
-                        },
-                        new
-                        {
-                            BillID = 3,
-                            BillDate = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            BillNumber = "BILL003",
-                            ChangeAmount = 0.00m,
-                            CreatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            OrderID = 3,
-                            PaidAmount = 294000.00m,
-                            PaymentMethod = "Transfer",
-                            ServiceCharge = 14000.00m,
-                            StaffID = 4,
-                            SubTotal = 280000.00m,
-                            TaxAmount = 28000.00m,
-                            TotalAmount = 294000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedBy = 4
-                        },
-                        new
-                        {
-                            BillID = 4,
-                            BillDate = new DateTime(2025, 6, 17, 13, 30, 0, 0, DateTimeKind.Unspecified),
-                            BillNumber = "BILL004",
-                            ChangeAmount = 0.00m,
-                            CreatedAt = new DateTime(2025, 6, 17, 13, 30, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            OrderID = 4,
-                            PaidAmount = 567500.00m,
-                            PaymentMethod = "QR_Pay",
-                            ServiceCharge = 25000.00m,
-                            StaffID = 4,
-                            SubTotal = 500000.00m,
-                            TaxAmount = 50000.00m,
-                            TotalAmount = 567500.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 13, 30, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedBy = 4
-                        },
-                        new
-                        {
-                            BillID = 5,
-                            BillDate = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            BillNumber = "BILL005",
-                            ChangeAmount = 0.00m,
-                            CreatedAt = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            OrderID = 5,
-                            PaidAmount = 423200.00m,
-                            PaymentMethod = "Card",
-                            ServiceCharge = 18400.00m,
-                            StaffID = 4,
-                            SubTotal = 368000.00m,
-                            TaxAmount = 36800.00m,
-                            TotalAmount = 423200.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedBy = 4
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.Category", b =>
@@ -230,44 +136,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryID = 1,
-                            CategoryName = "Khai vị",
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Món ăn khai vị và nhẹ",
-                            IsActive = true,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CategoryID = 2,
-                            CategoryName = "Món chính",
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Món ăn chính",
-                            IsActive = true,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CategoryID = 3,
-                            CategoryName = "Tráng miệng",
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Món tráng miệng ngọt",
-                            IsActive = true,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CategoryID = 4,
-                            CategoryName = "Đồ uống",
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Đồ uống và giải khát",
-                            IsActive = true,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.ComboDetail", b =>
@@ -294,29 +162,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("PromotionComboID");
 
                     b.ToTable("ComboDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            ComboDetailID = 1,
-                            MenuItemID = 1,
-                            PromotionComboID = 1,
-                            Quantity = 2
-                        },
-                        new
-                        {
-                            ComboDetailID = 2,
-                            MenuItemID = 2,
-                            PromotionComboID = 1,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            ComboDetailID = 3,
-                            MenuItemID = 4,
-                            PromotionComboID = 1,
-                            Quantity = 2
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.Customer", b =>
@@ -360,28 +205,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            CustomerID = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "khachhang1@gmail.com",
-                            FullName = "Hoàng Văn Em",
-                            LoyaltyPoints = 50.00m,
-                            PhoneNumber = "0912345678",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CustomerID = 2,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "khachhang2@gmail.com",
-                            FullName = "Nguyễn Thị Phượng",
-                            LoyaltyPoints = 20.00m,
-                            PhoneNumber = "0912345679",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.MenuItem", b =>
@@ -436,60 +259,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("MenuItems");
-
-                    b.HasData(
-                        new
-                        {
-                            MenuItemID = 1,
-                            CategoryID = 1,
-                            Cost = 20000.00m,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Chả giò giòn với rau củ",
-                            ImageURL = "cha_gio.jpg",
-                            IsAvailable = true,
-                            ItemName = "Chả giò",
-                            Price = 50000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            MenuItemID = 2,
-                            CategoryID = 2,
-                            Cost = 60000.00m,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Gà nướng với thảo mộc",
-                            ImageURL = "ga_nuong.jpg",
-                            IsAvailable = true,
-                            ItemName = "Gà nướng",
-                            Price = 150000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            MenuItemID = 3,
-                            CategoryID = 3,
-                            Cost = 30000.00m,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Bánh sô-cô-la đậm đà",
-                            ImageURL = "banh_socolate.jpg",
-                            IsAvailable = true,
-                            ItemName = "Bánh sô-cô-la",
-                            Price = 80000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            MenuItemID = 4,
-                            CategoryID = 4,
-                            Cost = 5000.00m,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Trà đá giải khát",
-                            ImageURL = "tra_da.jpg",
-                            IsAvailable = true,
-                            ItemName = "Trà đá",
-                            Price = 25000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.Order", b =>
@@ -578,108 +347,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                         {
                             t.HasCheckConstraint("CK_Orders_Status", "[Status] IN ('Pending', 'Confirmed', 'Preparing', 'Ready', 'Served', 'Paid', 'Cancelled')");
                         });
-
-                    b.HasData(
-                        new
-                        {
-                            OrderID = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerID = 1,
-                            CustomerName = "Hoàng Văn Em",
-                            CustomerPhone = "0912345678",
-                            DiscountAmount = 0.00m,
-                            FinalAmount = 405000.00m,
-                            OrderDate = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            OrderNumber = "ORD001",
-                            PaymentMethod = "QR_Pay",
-                            PaymentStatus = "Partial",
-                            StaffID = 2,
-                            Status = "Cancelled",
-                            TableID = 1,
-                            TotalAmount = 405000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedBy = 4
-                        },
-                        new
-                        {
-                            OrderID = 2,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            CustomerID = 2,
-                            CustomerName = "Nguyễn Thị Phượng",
-                            CustomerPhone = "0912345679",
-                            DiscountAmount = 25000.00m,
-                            FinalAmount = 230000.00m,
-                            Notes = "Ưu tiên nhanh",
-                            OrderDate = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            OrderNumber = "ORD002",
-                            PaymentMethod = "QR_Pay",
-                            PaymentStatus = "Partial",
-                            StaffID = 2,
-                            Status = "Served",
-                            TableID = 2,
-                            TotalAmount = 255000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedBy = 4
-                        },
-                        new
-                        {
-                            OrderID = 3,
-                            CreatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerName = "Khách lẻ",
-                            DiscountAmount = 0.00m,
-                            FinalAmount = 280000.00m,
-                            OrderDate = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            OrderNumber = "ORD003",
-                            PaymentMethod = "QR_Pay",
-                            PaymentStatus = "Partial",
-                            StaffID = 2,
-                            Status = "Ready",
-                            TableID = 3,
-                            TotalAmount = 280000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedBy = 4
-                        },
-                        new
-                        {
-                            OrderID = 4,
-                            CreatedAt = new DateTime(2025, 6, 17, 13, 30, 0, 0, DateTimeKind.Unspecified),
-                            CustomerID = 1,
-                            CustomerName = "Hoàng Văn Em",
-                            CustomerPhone = "0912345678",
-                            DiscountAmount = 0.00m,
-                            FinalAmount = 500000.00m,
-                            Notes = "Bàn VIP",
-                            OrderDate = new DateTime(2025, 6, 17, 13, 30, 0, 0, DateTimeKind.Unspecified),
-                            OrderNumber = "ORD004",
-                            PaymentMethod = "Card",
-                            PaymentStatus = "Partial",
-                            StaffID = 2,
-                            Status = "Ready",
-                            TableID = 4,
-                            TotalAmount = 500000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 13, 30, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedBy = 4
-                        },
-                        new
-                        {
-                            OrderID = 5,
-                            CreatedAt = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerID = 2,
-                            CustomerName = "Nguyễn Thị Phượng",
-                            CustomerPhone = "0912345679",
-                            DiscountAmount = 0.00m,
-                            FinalAmount = 368000.00m,
-                            OrderDate = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            OrderNumber = "ORD005",
-                            PaymentMethod = "Card",
-                            PaymentStatus = "Partial",
-                            StaffID = 2,
-                            Status = "Ready",
-                            TableID = 1,
-                            TotalAmount = 368000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedBy = 4
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.OrderDetail", b =>
@@ -740,180 +407,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("OrderDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            OrderDetailID = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 1,
-                            OrderID = 1,
-                            Quantity = 3,
-                            Status = "Preparing",
-                            TotalPrice = 150000.00m,
-                            UnitPrice = 50000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 2,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 2,
-                            Notes = "Preparing",
-                            OrderID = 1,
-                            Quantity = 1,
-                            Status = "Preparing",
-                            TotalPrice = 150000.00m,
-                            UnitPrice = 150000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 3,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 4,
-                            OrderID = 1,
-                            Quantity = 3,
-                            Status = "Preparing",
-                            TotalPrice = 75000.00m,
-                            UnitPrice = 25000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 4,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 1,
-                            OrderID = 2,
-                            Quantity = 2,
-                            Status = "Preparing",
-                            TotalPrice = 100000.00m,
-                            UnitPrice = 50000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 5,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 25000.00m,
-                            MenuItemID = 3,
-                            Notes = "Ưu tiên nhanh",
-                            OrderID = 2,
-                            Quantity = 2,
-                            Status = "Preparing",
-                            TotalPrice = 135000.00m,
-                            UnitPrice = 80000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 6,
-                            CreatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 2,
-                            OrderID = 3,
-                            Quantity = 1,
-                            Status = "Preparing",
-                            TotalPrice = 150000.00m,
-                            UnitPrice = 150000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 7,
-                            CreatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 4,
-                            OrderID = 3,
-                            Quantity = 2,
-                            Status = "Ordered",
-                            TotalPrice = 50000.00m,
-                            UnitPrice = 25000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 8,
-                            CreatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            OrderID = 3,
-                            PromotionComboID = 1,
-                            Quantity = 1,
-                            Status = "Served",
-                            TotalPrice = 350000.00m,
-                            UnitPrice = 350000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 9,
-                            CreatedAt = new DateTime(2025, 6, 17, 13, 30, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 2,
-                            Notes = "Thêm rau",
-                            OrderID = 4,
-                            Quantity = 2,
-                            Status = "Served",
-                            TotalPrice = 300000.00m,
-                            UnitPrice = 150000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 13, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 10,
-                            CreatedAt = new DateTime(2025, 6, 17, 13, 30, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 3,
-                            OrderID = 4,
-                            Quantity = 2,
-                            Status = "Served",
-                            TotalPrice = 160000.00m,
-                            UnitPrice = 80000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 13, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 11,
-                            CreatedAt = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 1,
-                            OrderID = 5,
-                            Quantity = 2,
-                            Status = "Served",
-                            TotalPrice = 100000.00m,
-                            UnitPrice = 50000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 12,
-                            CreatedAt = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 2,
-                            OrderID = 5,
-                            Quantity = 1,
-                            Status = "Served",
-                            TotalPrice = 150000.00m,
-                            UnitPrice = 150000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            OrderDetailID = 13,
-                            CreatedAt = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            DiscountAmount = 0.00m,
-                            MenuItemID = 3,
-                            OrderID = 5,
-                            Quantity = 1,
-                            Status = "Ready",
-                            TotalPrice = 80000.00m,
-                            UnitPrice = 80000.00m,
-                            UpdatedAt = new DateTime(2025, 6, 17, 14, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.Promotion", b =>
@@ -973,48 +466,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("Promotions");
-
-                    b.HasData(
-                        new
-                        {
-                            PromotionID = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Giảm 10% trên tổng hóa đơn",
-                            DiscountValue = 10.00m,
-                            EndDate = new DateTime(2025, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            MaxDiscountAmount = 100000.00m,
-                            PromotionName = "Giảm 10%",
-                            PromotionTypeID = 1,
-                            StartDate = new DateTime(2025, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            PromotionID = 2,
-                            BuyQuantity = 2,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Mua 2 món tráng miệng tặng 1 miễn phí",
-                            EndDate = new DateTime(2025, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            GetQuantity = 1,
-                            IsActive = true,
-                            PromotionName = "Mua 2 tặng 1",
-                            PromotionTypeID = 3,
-                            StartDate = new DateTime(2025, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            PromotionID = 3,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Combo đặc biệt cho gia đình",
-                            EndDate = new DateTime(2025, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            PromotionName = "Combo Gia đình",
-                            PromotionTypeID = 4,
-                            StartDate = new DateTime(2025, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.PromotionCombo", b =>
@@ -1055,18 +506,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("PromotionCombos");
-
-                    b.HasData(
-                        new
-                        {
-                            PromotionComboID = 1,
-                            ComboName = "Combo Gia đình A",
-                            ComboPrice = 350000.00m,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            PromotionID = 3,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.PromotionItem", b =>
@@ -1095,20 +534,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("PromotionID");
 
                     b.ToTable("PromotionItems");
-
-                    b.HasData(
-                        new
-                        {
-                            PromotionItemID = 1,
-                            MenuItemID = 3,
-                            PromotionID = 2
-                        },
-                        new
-                        {
-                            PromotionItemID = 2,
-                            CategoryID = 2,
-                            PromotionID = 1
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.PromotionType", b =>
@@ -1145,40 +570,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("PromotionTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            PromotionTypeID = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Giảm giá theo phần trăm",
-                            TypeName = "Phần trăm",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            PromotionTypeID = 2,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Giảm giá bằng số tiền cố định",
-                            TypeName = "Số tiền cố định",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            PromotionTypeID = 3,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Mua X món tặng Y món miễn phí",
-                            TypeName = "Mua X tặng Y",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            PromotionTypeID = 4,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Giảm giá cho combo món ăn",
-                            TypeName = "Combo",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.PromotionUsage", b =>
@@ -1208,16 +599,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("PromotionID");
 
                     b.ToTable("PromotionUsages");
-
-                    b.HasData(
-                        new
-                        {
-                            PromotionUsageID = 1,
-                            DiscountApplied = 25000.00m,
-                            OrderID = 2,
-                            PromotionID = 1,
-                            UsedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.QRSession", b =>
@@ -1258,26 +639,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("TableID");
 
                     b.ToTable("QRSessions");
-
-                    b.HasData(
-                        new
-                        {
-                            QRSessionID = 1,
-                            CustomerID = 1,
-                            IsActive = true,
-                            SessionStart = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            SessionToken = "SESSION_001",
-                            TableID = 1
-                        },
-                        new
-                        {
-                            QRSessionID = 2,
-                            CustomerID = 2,
-                            IsActive = true,
-                            SessionStart = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            SessionToken = "SESSION_002",
-                            TableID = 2
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.Review", b =>
@@ -1322,28 +683,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                         {
                             t.HasCheckConstraint("CK_Reviews_Rating", "[Rating] BETWEEN 0 AND 5");
                         });
-
-                    b.HasData(
-                        new
-                        {
-                            ReviewID = 1,
-                            Comment = "Dịch vụ tuyệt vời, món ăn ngon!",
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            CustomerID = 1,
-                            OrderID = 1,
-                            Rating = 5,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            ReviewID = 2,
-                            Comment = "Món ăn ngon nhưng phục vụ hơi chậm.",
-                            CreatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerID = 2,
-                            OrderID = 2,
-                            Rating = 4,
-                            UpdatedAt = new DateTime(2025, 6, 17, 13, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.Role", b =>
@@ -1380,40 +719,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            RoleID = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Quản lý nhà hàng",
-                            RoleName = "Quản lý",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            RoleID = 2,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Nhân viên phục vụ",
-                            RoleName = "Phục vụ",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            RoleID = 3,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Đầu bếp nhà bếp",
-                            RoleName = "Đầu bếp",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            RoleID = 4,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Nhân viên thu ngân",
-                            RoleName = "Thu ngân",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.Staff", b =>
@@ -1468,56 +773,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("Staffs");
-
-                    b.HasData(
-                        new
-                        {
-                            StaffID = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "quanly@nhahang.com",
-                            FullName = "Nguyễn Văn An",
-                            IsActive = true,
-                            PasswordHash = "hashed_password_1",
-                            PhoneNumber = "0901234567",
-                            RoleID = 1,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            StaffID = 2,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "phucvu1@nhahang.com",
-                            FullName = "Trần Thị Bình",
-                            IsActive = true,
-                            PasswordHash = "hashed_password_2",
-                            PhoneNumber = "0901234568",
-                            RoleID = 2,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            StaffID = 3,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "daubep1@nhahang.com",
-                            FullName = "Lê Văn Cường",
-                            IsActive = true,
-                            PasswordHash = "hashed_password_3",
-                            PhoneNumber = "0901234569",
-                            RoleID = 3,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            StaffID = 4,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "thungan1@nhahang.com",
-                            FullName = "Phạm Thị Dung",
-                            IsActive = true,
-                            PasswordHash = "hashed_password_4",
-                            PhoneNumber = "0901234570",
-                            RoleID = 4,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.StaffSchedule", b =>
@@ -1559,28 +814,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("WorkShiftID");
 
                     b.ToTable("StaffSchedules");
-
-                    b.HasData(
-                        new
-                        {
-                            ScheduleID = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Notes = "Quản lý ca sáng",
-                            ScheduleDate = new DateTime(2025, 6, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            StaffID = 1,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            WorkShiftID = 1
-                        },
-                        new
-                        {
-                            ScheduleID = 2,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Notes = "Phục vụ ca chiều",
-                            ScheduleDate = new DateTime(2025, 6, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            StaffID = 2,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            WorkShiftID = 2
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.Table", b =>
@@ -1637,56 +870,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("ZoneID");
 
                     b.ToTable("Tables");
-
-                    b.HasData(
-                        new
-                        {
-                            TableID = 1,
-                            Capacity = 4,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            QRCode = "QR_B01",
-                            Status = "Maintenance",
-                            TableNumber = "B01",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            ZoneID = 1
-                        },
-                        new
-                        {
-                            TableID = 2,
-                            Capacity = 4,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            QRCode = "QR_B02",
-                            Status = "Reserved",
-                            TableNumber = "B02",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            ZoneID = 1
-                        },
-                        new
-                        {
-                            TableID = 3,
-                            Capacity = 6,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            QRCode = "QR_B03",
-                            Status = "Occupied",
-                            TableNumber = "B03",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            ZoneID = 2
-                        },
-                        new
-                        {
-                            TableID = 4,
-                            Capacity = 8,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            QRCode = "QR_B04",
-                            Status = "Available",
-                            TableNumber = "B04",
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            ZoneID = 3
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.WorkShift", b =>
@@ -1729,28 +912,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("WorkShifts");
-
-                    b.HasData(
-                        new
-                        {
-                            WorkShiftID = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Ca làm việc buổi sáng",
-                            EndTime = new TimeSpan(0, 15, 0, 0, 0),
-                            ShiftName = "Ca Sáng",
-                            StartTime = new TimeSpan(0, 7, 0, 0, 0),
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            WorkShiftID = 2,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Ca làm việc buổi chiều",
-                            EndTime = new TimeSpan(0, 23, 0, 0, 0),
-                            ShiftName = "Ca Chiều",
-                            StartTime = new TimeSpan(0, 15, 0, 0, 0),
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.Zone", b =>
@@ -1790,35 +951,6 @@ namespace RestaurantSystem.BusinessObjects.Migrations
                         .IsUnique();
 
                     b.ToTable("Zones");
-
-                    b.HasData(
-                        new
-                        {
-                            ZoneID = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Khu vực ăn uống chính tầng 1",
-                            IsActive = true,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            ZoneName = "Tầng 1"
-                        },
-                        new
-                        {
-                            ZoneID = 2,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Khu vực ăn uống riêng tư tầng 2",
-                            IsActive = true,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            ZoneName = "Tầng 2"
-                        },
-                        new
-                        {
-                            ZoneID = 3,
-                            CreatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Phòng ăn VIP độc quyền",
-                            IsActive = true,
-                            UpdatedAt = new DateTime(2025, 6, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            ZoneName = "Phòng VIP"
-                        });
                 });
 
             modelBuilder.Entity("RestaurantSystem.BusinessObjects.Models.Bill", b =>

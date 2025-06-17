@@ -9,20 +9,17 @@ using System.Threading.Tasks;
 
 namespace RestaurantSystem.BusinessObjects.Models
 {
-    public class Category
+    public class PromotionType
     {
         [Key]
-        public int CategoryID { get; set; }
+        public int PromotionTypeID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string CategoryName { get; set; }
+        public string TypeName { get; set; }
 
         [StringLength(255)]
         public string? Description { get; set; }
-
-        [Required]
-        public bool IsActive { get; set; } = true;
 
         public DateTime? CreatedAt { get; set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; set; } = DateTime.Now;
@@ -31,6 +28,6 @@ namespace RestaurantSystem.BusinessObjects.Models
         // Navigation properties
         [ForeignKey("UpdatedBy")]
         public Staff? UpdatedByStaff { get; set; }
-        public List<MenuItem> MenuItems { get; set; }
+        public List<Promotion> Promotions { get; set; }
     }
 }
