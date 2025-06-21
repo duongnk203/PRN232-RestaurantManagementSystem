@@ -46,6 +46,12 @@ namespace RestaurantSystem.API
             builder.Services.AddTransient<PromotionDAO>();
             builder.Services.AddTransient<IPromotionTypeService, PromotionTypeService>();
             builder.Services.AddTransient<PromotionTypeDAO>();
+            builder.Services.AddTransient<PromotionUsageDAO>();
+            builder.Services.AddScoped<IPromotionUsageService, PromotionUsageService>();
+            builder.Services.AddTransient<IPromotionItemService, PromotionItemService>();
+            builder.Services.AddTransient<PromotionItemDAO>();
+            builder.Services.AddTransient<PromotionComboDAO>();
+            builder.Services.AddScoped<IPromotionComboService, PromotionComboService>();
 
 
             var app = builder.Build();

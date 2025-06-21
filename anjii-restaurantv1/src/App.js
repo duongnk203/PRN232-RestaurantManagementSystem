@@ -1,12 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import AdminLayout from './layouts/AdminLayout';
-import Dashboard from './pages/admin/Dashboard';
-import UserManagement from './pages/admin/StaffManagement';
-import MenuManagement from './pages/admin/MenuManagement';
-import OrderManagement from './pages/admin/OrderManagement';
-import Revenue from './pages/admin/Revenue';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import AdminLayout from "./layouts/AdminLayout";
+import Dashboard from "./pages/admin/Dashboard";
+import UserManagement from "./pages/admin/StaffManagement";
+import MenuManagement from "./pages/admin/MenuManagement";
+import OrderManagement from "./pages/admin/OrderManagement";
+import PromotionManagement from "./pages/admin/PromotionManagement";
+import Revenue from "./pages/admin/Revenue";
+import "./App.css";
 
 function App() {
   return (
@@ -50,6 +56,14 @@ function App() {
           element={
             <AdminLayout>
               <Revenue />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/promotion"
+          element={
+            <AdminLayout>
+              <PromotionManagement />
             </AdminLayout>
           }
         />

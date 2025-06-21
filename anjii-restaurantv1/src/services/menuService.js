@@ -43,6 +43,24 @@ export const menuService = {
     }
   },
 
+  getMenuItemsSearch: async (searchItem, categoryId = null) => {
+    try {
+      const queryParams = new URLSearchParams();
+      if (searchItem) queryParams.append("searchItem", searchItem);
+      if (categoryId) queryParams.append("categoryId", categoryId);
+
+      return api.get(`/Menu/GetMenus?${queryParams.toString()}`);
+    } catch (error) {
+      console.error("Error searching menu items:", error);
+      return {
+        isSuccess: false,
+        message: error.message || "Failed to search menu items",
+        data: [],
+        errors: error.response?.data?.errors || [],
+      };
+    }
+  },
+
   // Get menu item by ID
   getMenuItemById: async (id) => {
     return api.get(`/menu/${id}`);

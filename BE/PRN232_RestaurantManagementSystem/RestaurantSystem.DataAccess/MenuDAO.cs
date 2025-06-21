@@ -34,6 +34,39 @@ namespace RestaurantSystem.DataAccess
             return menus;
         }
 
+        public async Task<List<MenuItemModel>> GetMenuBySearch(string? searchMenu, int? categoryId)
+        {
+            var query = _context.MenuItems.AsQueryable();
+
+            // Lọc món khả dụng
+            query = query.Where(m => m.IsAvailable);
+
+            // Nếu có từ khóa tìm kiếm
+            if (!string.IsNullOrWhiteSpace(searchMenu))
+            {
+                string trimmed = searchMenu.Trim();
+                query = query.Where(m => m.ItemName.Contains(trimmed));
+            }
+
+            // Nếu có lọc theo danh mục
+            if (categoryId.HasValue)
+            {
+                query = query.Where(m => m.CategoryID == categoryId.Value);
+            }
+
+            var result = await query.Select(m => new MenuItemModel
+            {
+                MenuItemId = m.MenuItemID,
+                ItemName = m.ItemName,
+                Price = m.Price,
+                CategoryId = m.CategoryID,
+                ImageUrl = m.ImageURL,
+            }).ToListAsync();
+
+            return result;
+        }
+
+
         public async Task<int> CreateMenuItem(CreateMenu menu)
         {
             var newMenu = new MenuItem

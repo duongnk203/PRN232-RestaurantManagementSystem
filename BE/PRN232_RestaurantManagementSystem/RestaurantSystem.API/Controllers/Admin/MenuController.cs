@@ -53,5 +53,16 @@ namespace RestaurantSystem.API.Controllers.Admin
             var result = await _menuService.DeleteMenuItemAsync(id);
             return HandleServiceResult(result);
         }
+
+        [HttpGet("SearchMenuItems")]
+        public async Task<IActionResult> SearchMenuItems([FromQuery] string? searchMenu, int? categoryId)
+        {
+            var result = await _menuService.GetMenuItemBySearch(searchMenu, categoryId);
+            if (result == null || result.Data == null || !result.Data.Any())
+            {
+                return NotFoundWrapper<List<MenuItemModel>>("No menu items found matching the search criteria.");
+            }
+            return HandleServiceResult(result);
+        }
     }
 }

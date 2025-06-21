@@ -14,6 +14,7 @@ namespace RestaurantSystem.Services
         Task<ServiceResult<int>> CreateMenuItemAsync(CreateMenu menu);
         Task<ServiceResult<int>> UpdateMenuItemAsync(UpdateMenu menu);
         Task<ServiceResult<int>> DeleteMenuItemAsync(int id);
+        Task<ServiceResult<List<MenuItemModel>>> GetMenuItemBySearch(string searchMenu, int? categoryId);
     }
     public class MenuService : IMenuService
     {
@@ -128,6 +129,23 @@ namespace RestaurantSystem.Services
             catch (Exception ex)
             {
                 return ServiceResult<int>.Error("An error occurred while deleting menu item", new List<string> { ex.Message });
+            }
+        }
+
+        public async Task<ServiceResult<List<MenuItemModel>>> GetMenuItemBySearch(string? searchMenu, int? categoryId)
+        {
+            try
+            {
+                var menuItems = await _menuDAO.GetMenuBySearch(searchMenu, categoryId);
+                if (menuItems == null || !menuItems.Any())
+                {
+                    return ServiceResult<List<MenuItemModel>>.NotFound("No menu items found");
+                }
+                return ServiceResult<List<MenuItemModel>>.Success(menuItems, "Menu items retrieved successfully");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<List<MenuItemModel>>.Error("An error occurred while retrieving menu items", new List<string> { ex.Message });
             }
         }
     }

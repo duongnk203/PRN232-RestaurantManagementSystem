@@ -58,4 +58,13 @@ namespace RestaurantSystem.DTOs
         [Required(ErrorMessage = "ID món ăn là bắt buộc")]
         public int MenuItemId { get; set; } // ID của món ăn để cập nhật
     }
+
+    public class MenuItemModel
+    {
+        public int MenuItemId { get; set; }
+        public string ItemName { get; set; }
+        public decimal Price { get; set; }
+        public int CategoryId { get; set; }
+        public string ImageUrl { get; set; }
+    }
 }

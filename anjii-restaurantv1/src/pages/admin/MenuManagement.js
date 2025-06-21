@@ -52,12 +52,12 @@ const MenuManagementLayout = () => {
       const filters = {
         page,
         limit: pageSize,
-        searchItem: searchItem ? searchItem.trim() : undefined,
+        searchItem: searchItem?.trim() || undefined,
         categoryId: selectedCategory || undefined,
-        isAvailable: isAvailable, // Send the value directly, API should handle null case
+        isAvailable: isAvailable, // boolean hoặc null (tương ứng DTO)
       };
 
-      console.log("Fetching with filters:", filters); // For debugging
+      console.log("Fetching with filters:", filters);
       const response = await menuService.getMenuItems(filters);
 
       if (response.isSuccess && response.data) {

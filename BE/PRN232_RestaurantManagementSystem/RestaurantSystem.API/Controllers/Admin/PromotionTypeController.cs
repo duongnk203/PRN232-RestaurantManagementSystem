@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RestaurantSystem.DTOs;
 using RestaurantSystem.Services;
 
 namespace RestaurantSystem.API.Controllers.Admin
@@ -14,5 +15,15 @@ namespace RestaurantSystem.API.Controllers.Admin
             _promotionTypeService = promotionTypeService;
         }
 
+        [HttpGet("GetPromotionTypes")]
+        public async Task<IActionResult> GetPromtionTypes()
+        {
+            var result = await _promotionTypeService.GetPromotionTypesAsync();
+            if (result == null)
+            {
+                return NotFoundWrapper<List<PromotionTypeModel>>("No promotion types found.");
+            }
+            return HandleServiceResult(result);
+        }
     }
 }
